@@ -27,8 +27,8 @@ jobs:
       - name: Lilu Bootstrap
         run: |
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
-      - run: xcodebuild -jobs 1 -configuration Debug
-      - run: xcodebuild -jobs 1 -configuration Release
+      - run: xcodebuild -workspace "GenericCardReaderFriend.xcworkspace" -scheme "GenericCardReaderFriend" -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1  -jobs 1 -configuration Debug
+      - run: xcodebuild -workspace "GenericCardReaderFriend.xcworkspace" -scheme "GenericCardReaderFriend" -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1  -jobs 1 -configuration Release
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4.3.4
