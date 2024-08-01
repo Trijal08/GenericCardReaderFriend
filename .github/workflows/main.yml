@@ -32,10 +32,10 @@ jobs:
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
       - name: Build
         run: |
-          mkdir build
-          xcodebuild -scheme "GenericCardReaderFriend" build CONFIGURATION_BUILD_DIR=build -jobs 1
+          xcodebuild -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Debug
+          xcodebuild -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Release
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4.3.4
         with:
           name: Artifacts
-          path: build
+          path: build/*/*.zip
