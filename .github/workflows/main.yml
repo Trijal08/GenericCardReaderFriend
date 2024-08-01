@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
         with:
+          submodules: recursive
+      - uses: actions/checkout@v4.1.7
+        with:
           repository: acidanthera/MacKernelSDK
           path: MacKernelSDK
       - name: CI Bootstrap
