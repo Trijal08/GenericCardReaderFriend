@@ -32,8 +32,8 @@ jobs:
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
       - name: Build
         run: |
-          xcodebuild -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Debug
-          xcodebuild -derivedDataPath build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Release
+          xcodebuild build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Debug
+          xcodebuild build clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -jobs 1 -configuration Release
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4.3.4
         with:
